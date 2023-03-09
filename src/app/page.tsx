@@ -1,14 +1,11 @@
-import FullScreen from "../components/FullScreen";
 import Search from "../components/Search";
 
 export default async () => {
     return (
-        <FullScreen>
-            <section className="col center gap-2 bg-color">
-                <h2 className="h4 my-6">Search Repo Issues</h2>
-                <Search />
-            </section>
-        </FullScreen>
+        <section className="col center gap-2 bg-color">
+            <h2 className="h4 my-6">Search Repo Issues</h2>
+            <Search />
+        </section>
     );
 };
 

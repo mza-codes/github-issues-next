@@ -8,7 +8,9 @@ export default function RootLayout({
     return (
         <html>
             <head />
-            <body>{children}</body>
+            <body>
+                <main className="min-h-[100dvh] col center">{children}</main>
+            </body>
         </html>
     );
 }

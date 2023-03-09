@@ -117,6 +117,10 @@ body {
 }
 
 .icon {
+    @apply cursor-pointer focus:scale-90 transition-all ease-in-out;
+}
+
+.hidden-icon {
     @apply opacity-0 hover:opacity-100 cursor-pointer;
 }
 

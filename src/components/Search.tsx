@@ -27,8 +27,10 @@ export default function Search() {
                     className="input-field"
                 />
             ))}
-            <button type="submit" className="btn-submit btn-hover text-sm">
-                Submit
+            <button
+                type="submit"
+                className="btn-submit max-w-fit0 btn-hover text-sm">
+                Search
             </button>
         </form>
     );
