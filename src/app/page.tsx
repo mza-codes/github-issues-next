@@ -1,4 +1,9 @@
+import { Metadata } from "next";
 import Search from "../components/Search";
+
+export const metadata: Metadata = {
+    title: "Home",
+};
 
 export default async () => {
     return (
@@ -13,5 +18,4 @@ export default async () => {
  * @param { ?page=2 }
  * @param { q=is%3Aissue+is%3Aopen }
  * @param { %3A === : }
- * @see is:open view opened issues
- */
+ * @see is:open view opened issues */
