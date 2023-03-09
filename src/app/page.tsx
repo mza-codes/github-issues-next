@@ -1,8 +1,20 @@
-export default () => {
+import FullScreen from "../components/FullScreen";
+import Search from "../components/Search";
 
-  return (
-    <section className="bg-red-400 w-64 h-64 p-2 m-2">
-      <h2 className="text-2xl">Hello there!</h2>
-    </section>
-  )
+export default async () => {
+    return (
+        <FullScreen>
+            <section className="col center gap-2 bg-color">
+                <h2 className="h4 my-6">Search Repo Issues</h2>
+                <Search />
+            </section>
+        </FullScreen>
+    );
 };
+
+/**
+ * @param { ?page=2 }
+ * @param { q=is%3Aissue+is%3Aopen }
+ * @param { %3A === : }
+ * @see is:open view opened issues
+ */

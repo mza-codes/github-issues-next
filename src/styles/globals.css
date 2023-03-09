@@ -10,10 +10,33 @@
 :root {
     --theme-color: #00000070;
     --test: #ff2f28;
+    --bg-main: #ffe0eb;
 }
 
-.app-page {
-    @apply bg-gradient-to-b from-green-300 to-fuchsia-600 min-h-screen w-full flex flex-col items-center justify-center;
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-main);
+}
+
+.gradient-bg {
+    @apply bg-gradient-to-r from-red-200 via-emerald-300 to-cyan-200;
+}
+
+.bg-color {
+    background-color: var;
+}
+
+.input-field {
+    @apply py-2 px-4 min-w-[280px] w-max rounded-md focus:border-green-500 outline-none border-2;
+}
+
+.btn-submit {
+    @apply py-2 px-4 text-sm bg-emerald-300 hover:bg-emerald-400 text-black;
+}
+
+.btn-hover {
+    @apply active:scale-95 transition-all ease-in-out;
 }
 
 .img-pacleholder {
@@ -29,11 +52,11 @@
 }
 
 .row {
-    @apply flex flex-row flex-wrap gap-2;
+    @apply flex flex-row flex-wrap;
 }
 
 .col {
-    @apply flex flex-col gap-2;
+    @apply flex flex-col flex-wrap;
 }
 
 .center {
@@ -95,15 +118,6 @@
 
 .icon {
     @apply opacity-0 hover:opacity-100 cursor-pointer;
-}
-
-/* PersonBar */
-.actor-avatar {
-    @apply cursor-pointer hover:scale-105 active:scale-90 transition-all ease-linear;
-}
-
-.persons-container::-webkit-scrollbar {
-    display: none;
 }
 
 /* LOADER BAR */

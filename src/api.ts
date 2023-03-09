@@ -1,10 +1,5 @@
-import axios from "axios";
+import { Octokit } from "octokit";
 
-// if (!process.env.NEXT_PUBLIC_DOMAIN)
-//     throw new Error("VARIABLE `NEXT_PUBLIC_DOMAIN` is Required!");
-
-const API = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_DOMAIN!,
+export const octokit = new Octokit({
+    auth: process.env.GITHUB_TOKEN ?? "",
 });
-
-export default API;
