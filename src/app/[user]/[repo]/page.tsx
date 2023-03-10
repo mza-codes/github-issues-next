@@ -5,8 +5,8 @@ import Issues from "../../../components/Issues";
 import PaginationWrapper from "../../../components/PaginationWrapper";
 import { generatePages } from "../../../utils";
 
-export async function generateMetadata({ searchParams }: any) {
-    return { title: `Issues - ${searchParams?.user} | ${searchParams?.repo}` };
+export async function generateMetadata({ params }: any) {
+    return { title: `Issues - ${params?.user} | ${params?.repo}` };
 }
 
 export default async ({ params, searchParams }: any) => {
