@@ -31,16 +31,23 @@ export default async ({ searchParams }: any) => {
                     <Issues data={data} />
                 </section>
                 <PaginationWrapper>
-                    {pages.map((_, i) => (
-                        <Link
-                            href={`/search/issues/?user=${user}&repo=${repo}&page=${
-                                i + 1
-                            }`}
-                            className="page-link"
-                            key={i}>
-                            {i + 1}
-                        </Link>
-                    ))}
+                    {pages.map((p) => {
+                        if (p === null) {
+                            return (
+                                <button key={p} disabled className="page-link">
+                                    ...
+                                </button>
+                            );
+                        } else
+                            return (
+                                <Link
+                                    key={p}
+                                    href={`/search/issues/?user=${user}&repo=${repo}&page=${p}`}
+                                    className="page-link">
+                                    {p}
+                                </Link>
+                            );
+                    })}
                 </PaginationWrapper>
             </>
         );

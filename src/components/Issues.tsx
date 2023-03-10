@@ -3,7 +3,7 @@ import IssueCard from "./IssueCard";
 
 export default function Issues({ data }: Props) {
     return (
-        <section className="col gap-2 center px-3">
+        <section className="col gap-2 center px-3 pb-16">
             {data.map((issue) => (
                 <IssueCard key={issue.id} item={issue} />
             ))}
