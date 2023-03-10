@@ -10,10 +10,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <link rel="icon" href="/favicon.ico" />
             </head>
             <body>
-                <main className="min-h-[100dvh] col center">
-                    <Header />
-                    {children}
-                </main>
+                <Header />
+                <main className="min-h-[100dvh] col center pt-24">{children}</main>
             </body>
         </html>
     );

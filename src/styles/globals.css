@@ -11,12 +11,32 @@
     --theme-color: #00000070;
     --test: #ff2f28;
     --bg-main: #ebebeb;
+    --text-main: #000;
+    --text-sec: #fff;
+    --bg-header: rgb(229, 231, 235);
+}
+
+.theme {
+    --bg-main: #333;
+    --text-main: #fff;
+    --text-sec: #111;
+    --bg-header: #222;
+}
+
+.theme-text {
+    color: var(--text-main);
+}
+
+.header {
+    /* bg-gray-200 */
+    background-color: var(--bg-header);
 }
 
 body {
     margin: 0;
     padding: 0;
     background-color: var(--bg-main);
+    color: var(--text-main);
 }
 
 .page-link {
@@ -32,11 +52,12 @@ body {
 }
 
 .input-field {
+    color: #000;
     @apply py-2 px-4 min-w-[280px] w-max rounded-md focus:border-green-500 outline-none border-2;
 }
 
 .btn-submit {
-    @apply py-2 px-4 text-sm bg-emerald-300 hover:bg-emerald-400 text-black;
+    @apply py-2 px-4 text-sm bg-emerald-300 hover:bg-emerald-400 text-black rounded-md;
 }
 
 .btn-hover {

@@ -1,12 +1,9 @@
 const obj = {
     url: "https://api.github.com/repos/pmndrs/zustand/issues/1678",
     repository_url: "https://api.github.com/repos/pmndrs/zustand",
-    labels_url:
-        "https://api.github.com/repos/pmndrs/zustand/issues/1678/labels{/name}",
-    comments_url:
-        "https://api.github.com/repos/pmndrs/zustand/issues/1678/comments",
-    events_url:
-        "https://api.github.com/repos/pmndrs/zustand/issues/1678/events",
+    labels_url: "https://api.github.com/repos/pmndrs/zustand/issues/1678/labels{/name}",
+    comments_url: "https://api.github.com/repos/pmndrs/zustand/issues/1678/comments",
+    events_url: "https://api.github.com/repos/pmndrs/zustand/issues/1678/events",
     html_url: "https://github.com/pmndrs/zustand/pull/1678",
     id: 1610708325,
     node_id: "PR_kwDOCr-ZC85LVMgJ",
@@ -21,17 +18,14 @@ const obj = {
         url: "https://api.github.com/users/dai-shi",
         html_url: "https://github.com/dai-shi",
         followers_url: "https://api.github.com/users/dai-shi/followers",
-        following_url:
-            "https://api.github.com/users/dai-shi/following{/other_user}",
+        following_url: "https://api.github.com/users/dai-shi/following{/other_user}",
         gists_url: "https://api.github.com/users/dai-shi/gists{/gist_id}",
-        starred_url:
-            "https://api.github.com/users/dai-shi/starred{/owner}{/repo}",
+        starred_url: "https://api.github.com/users/dai-shi/starred{/owner}{/repo}",
         subscriptions_url: "https://api.github.com/users/dai-shi/subscriptions",
         organizations_url: "https://api.github.com/users/dai-shi/orgs",
         repos_url: "https://api.github.com/users/dai-shi/repos",
         events_url: "https://api.github.com/users/dai-shi/events{/privacy}",
-        received_events_url:
-            "https://api.github.com/users/dai-shi/received_events",
+        received_events_url: "https://api.github.com/users/dai-shi/received_events",
         type: "User",
         site_admin: false,
     },
@@ -68,12 +62,50 @@ const obj = {
         rocket: 0,
         eyes: 0,
     },
-    timeline_url:
-        "https://api.github.com/repos/pmndrs/zustand/issues/1678/timeline",
+    timeline_url: "https://api.github.com/repos/pmndrs/zustand/issues/1678/timeline",
     performed_via_github_app: null,
     state_reason: null,
 };
 
+const single = {
+    sha: "a74d5e882cef7a6a94ca461d223a0234ddb4e618",
+    node_id: "C_kwDOCr-ZC9oAKGE3NGQ1ZTg4MmNlZjdhNmE5NGNhNDYxZDIyM2EwMjM0ZGRiNGU2MTg",
+    url: "https://api.github.com/repos/pmndrs/zustand/git/commits/a74d5e882cef7a6a94ca461d223a0234ddb4e618",
+    html_url:
+        "https://github.com/pmndrs/zustand/commit/a74d5e882cef7a6a94ca461d223a0234ddb4e618",
+    author: {
+        name: "daishi",
+        email: "daishi@axlight.com",
+        date: "2023-03-06T06:09:14Z",
+    },
+    committer: {
+        name: "daishi",
+        email: "daishi@axlight.com",
+        date: "2023-03-06T06:09:14Z",
+    },
+    tree: {
+        sha: "1ccff6257e30c77a58ec1ddfc3e91ff3498655d8",
+        url: "https://api.github.com/repos/pmndrs/zustand/git/trees/1ccff6257e30c77a58ec1ddfc3e91ff3498655d8",
+    },
+    message: "fix workflow file",
+    parents: [
+        {
+            sha: "bda1a3976e4d72bbc0d5ff1b5c51388ab9de3fe2",
+            url: "https://api.github.com/repos/pmndrs/zustand/git/commits/bda1a3976e4d72bbc0d5ff1b5c51388ab9de3fe2",
+            html_url:
+                "https://github.com/pmndrs/zustand/commit/bda1a3976e4d72bbc0d5ff1b5c51388ab9de3fe2",
+        },
+    ],
+    verification: {
+        verified: false,
+        reason: "unsigned",
+        signature: null,
+        payload: null,
+    },
+    event: "committed",
+};
+type singleIssue = typeof single;
 type issue = typeof obj;
 
 export interface RepoIssue extends issue {}
+export interface DeatailedIssue extends singleIssue {}
