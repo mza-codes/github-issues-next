@@ -47,6 +47,7 @@ export default async ({ searchParams }: any) => {
 };
 
 /**
+ * @private { https://api.github.com/search/issues?q={query}&page={page} }
  * @param { ?page=2 }
  * @param { q=is%3Aissue+is%3Aopen }
  * @param { %3A === : }
