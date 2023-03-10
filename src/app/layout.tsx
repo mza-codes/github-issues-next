@@ -1,3 +1,4 @@
+import Header from "../components/Header";
 import "../styles/globals.css";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -9,7 +10,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <link rel="icon" href="/favicon.ico" />
             </head>
             <body>
-                <main className="min-h-[100dvh] col center">{children}</main>
+                <main className="min-h-[100dvh] col center">
+                    <Header />
+                    {children}
+                </main>
             </body>
         </html>
     );

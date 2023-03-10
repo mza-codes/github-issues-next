@@ -2,6 +2,8 @@ import Link from "next/link";
 import { github } from "../../api";
 import ErrorBox from "../../components/Error";
 import Issues from "../../components/Issues";
+import PaginationWrapper from "../../components/PaginationWrapper";
+import { generatePages } from "../../utils";
 
 export default async ({ searchParams }: any) => {
     let { q, page = 1 } = searchParams;
@@ -12,23 +14,32 @@ export default async ({ searchParams }: any) => {
         if (data?.issues?.length <= 0)
             throw new Error(`There are no more issues associated with ${q}!`);
 
-        const pages = [...Array(data?.total_count)];
+        const pages = generatePages(parseInt(page) || 2);
         return (
             <>
                 <section className="col center gap-2">
                     <h2 className="h3 my-6">Listing Issues with query: {q}</h2>
                     <Issues data={data?.items} />
                 </section>
-                <section className="fixed bottom-0 py-2 bg-white w-full row gap-2 center">
-                    {pages.map((_, i) => (
-                        <Link
-                            href={`/issues/?q=${q}&page=${i + 1}`}
-                            className="page-link"
-                            key={i}>
-                            {i + 1}
-                        </Link>
-                    ))}
-                </section>
+                <PaginationWrapper>
+                    {pages.map((p) => {
+                        if (p === null) {
+                            return (
+                                <button key={p} disabled className="page-link">
+                                    ...
+                                </button>
+                            );
+                        } else
+                            return (
+                                <Link
+                                    key={p}
+                                    href={`/issues/?q=${q}&page=${p}`}
+                                    className="page-link">
+                                    {p}
+                                </Link>
+                            );
+                    })}
+                </PaginationWrapper>
             </>
         );
     } catch (err: any) {
@@ -37,10 +48,3 @@ export default async ({ searchParams }: any) => {
         return <ErrorBox message={err?.message ?? msg} />;
     }
 };
-
-/**
- * @argument {
- *      const currentPage = parseInt(page);
- *      const pages = [...Array(currentPage + 4)];
- * }
- */

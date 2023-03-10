@@ -1,6 +1,7 @@
 // import moment from "moment";
 import { RepoIssue } from "../@types";
 import { MdOutlineOpenInNew } from "react-icons/md";
+import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
 
 export default function IssueCard({ item }: IssueCardProps) {
@@ -12,12 +13,23 @@ export default function IssueCard({ item }: IssueCardProps) {
             </article>
             {/* <h3 className="text-base">Last Modified: {moment(item.updated_at).calendar()}</h3> */}
             {/* <h3 className="text-base">Created: {moment(item.created_at).calendar()}</h3> */}
-            <Link
-                title="Expand View"
-                href={`/`}
-                className="absolute right-1 bottom-1 text-xl icon opacity-50 hover:opacity-100">
-                <MdOutlineOpenInNew />
-            </Link>
+            <div className="absolute right-2 bottom-1 flex flex-row-reverse gap-2">
+                <Link
+                    title="Expand View"
+                    href={`/`}
+                    className="text-xl icon opacity-50 hover:opacity-100">
+                    <MdOutlineOpenInNew />
+                </Link>
+
+                <a
+                    title="View in Github"
+                    href={item.html_url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-xl icon opacity-50 hover:opacity-100">
+                    <FaGithub />
+                </a>
+            </div>
         </div>
     );
 }
