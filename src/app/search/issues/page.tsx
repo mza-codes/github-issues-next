@@ -1,7 +1,9 @@
-import axios from "axios";
 import Link from "next/link";
+import { github } from "../../../api";
 import ErrorBox from "../../../components/Error";
 import Issues from "../../../components/Issues";
+import PaginationWrapper from "../../../components/PaginationWrapper";
+import { generatePages } from "../../../utils";
 
 export async function generateMetadata({ searchParams }: any) {
     return { title: `Issues - ${searchParams?.user} | ${searchParams?.repo}` };
@@ -16,27 +18,30 @@ export default async ({ searchParams }: any) => {
         page = qPage ? parseInt(qPage) : 1;
 
         if (!user || !repo) throw new Error("Invalid User/Repo");
-        const { data } = await axios.get(`https://api.github.com/repos/${user}/${repo}/issues?page=${page}`);
+        const { data } = await github.get(`/repos/${user}/${repo}/issues?page=${page}`);
 
-        if (data?.length <= 0) throw new Error(`There are no more issues associated with ${repo}!`);
+        if (data?.length <= 0)
+            throw new Error(`There are no more issues associated with ${repo}!`);
 
-        const pages = [...Array(page + 4)];
+        const pages = generatePages(page || 2);
         return (
             <>
                 <section className="col center gap-2">
                     <h2 className="h3 my-6">Issues with {repo}</h2>
                     <Issues data={data} />
                 </section>
-                <section className="fixed bottom-0 py-2 bg-white w-full row gap-2 center">
+                <PaginationWrapper>
                     {pages.map((_, i) => (
                         <Link
-                            href={`/search/issues/?user=${user}&repo=${repo}&page=${i + 1}`}
+                            href={`/search/issues/?user=${user}&repo=${repo}&page=${
+                                i + 1
+                            }`}
                             className="page-link"
                             key={i}>
                             {i + 1}
                         </Link>
                     ))}
-                </section>
+                </PaginationWrapper>
             </>
         );
     } catch (err: any) {

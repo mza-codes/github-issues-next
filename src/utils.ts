@@ -1,48 +1,18 @@
-import { HttpStatusCode } from "axios";
-import { NextApiResponse } from "next/types";
-
 export const genTitle = (prefix: string) => `${prefix} | mFlux`;
 
-export class APIResponse {
-    constructor(
-        res: NextApiResponse,
-        code: HttpStatusCode,
-        success: boolean,
-        msg: string,
-        payload = {}
-    ) {
-        res.status(code).json(genBody(success, msg, payload));
-        res.end();
-        // genRes(res, code, success, msg, payload);
+export function generatePages(s: number) {
+    let arr: any[] = [];
+    if (s >= 10) {
+        arr.push(1, 2, 3, null, s - 1, s - 2);
+        for (let i = s; i <= s + 4; i++) {
+            arr.push(i);
+        }
+    } else {
+        for (let i = 1; i <= s + 4; i++) {
+            arr.push(i);
+        }
     }
-}
-
-export const genBody = (success = false, msg: string, payload: any) => {
-    return {
-        success,
-        message: msg ?? "",
-        ...payload,
-    };
-};
-
-async function genRes(
-    res: NextApiResponse,
-    code: HttpStatusCode,
-    success: boolean,
-    msg: string,
-    payload: any
-) {
-    if (!res || !code) throw new Error("res & code is required!");
-    return res.status(code).json(genBody(success, msg, payload));
-}
-
-export function verifyEnv() {
-    console.warn("Verifying Environment Variables");
-    if (!process.env.TMDB_API_KEY)
-        throw new Error("VARIABLE: `TMDB_API_KEY` is Missing!");
-    if (!process.env.NEXT_PUBLIC_DOMAIN)
-        throw new Error("VARIABLE `NEXT_PUBLIC_DOMAIN` is Required!");
-    return;
+    return arr;
 }
 
 export function genRandom(limit: number) {
