@@ -1,12 +1,14 @@
 import Link from "next/link";
-import { github } from "../../api";
-import ErrorBox from "../../components/Error";
-import Issues from "../../components/Issues";
-import PaginationWrapper from "../../components/PaginationWrapper";
-import { generatePages } from "../../utils";
+import { github } from "../../../api";
+import ErrorBox from "../../../components/Error";
+import Issues from "../../../components/Issues";
+import PaginationWrapper from "../../../components/PaginationWrapper";
+import { generatePages } from "../../../utils";
 
-export default async ({ searchParams }: any) => {
-    let { q, page = 1 } = searchParams;
+export default async ({ params, searchParams }: any) => {
+    let { repo } = params;
+    let { page = 1 } = searchParams;
+    const q = repo;
     try {
         if (!q) throw new Error(`Invalid Query!`);
 
@@ -33,7 +35,7 @@ export default async ({ searchParams }: any) => {
                             return (
                                 <Link
                                     key={p}
-                                    href={`/issues/?q=${q}&page=${p}`}
+                                    href={`/search/${q}?page=${p}`}
                                     className="page-link">
                                     {p}
                                 </Link>

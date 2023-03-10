@@ -9,10 +9,11 @@ export async function generateMetadata({ searchParams }: any) {
     return { title: `Issues - ${searchParams?.user} | ${searchParams?.repo}` };
 }
 
-export default async ({ searchParams }: any) => {
+export default async ({ params, searchParams }: any) => {
     let page = 1;
     console.log("PARAMS: ", searchParams);
-    const { user, repo, page: qPage } = searchParams;
+    const { page: qPage } = searchParams;
+    const { user, repo } = params;
 
     try {
         page = qPage ? parseInt(qPage) : 1;
@@ -42,7 +43,7 @@ export default async ({ searchParams }: any) => {
                             return (
                                 <Link
                                     key={p}
-                                    href={`/search/issues/?user=${user}&repo=${repo}&page=${p}`}
+                                    href={`/${user}/${repo}?page=${p}`}
                                     className="page-link">
                                     {p}
                                 </Link>

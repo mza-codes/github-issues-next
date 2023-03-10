@@ -1,6 +1,6 @@
-import { DeatailedIssue } from "../../../@types";
-import { github } from "../../../api";
-import ErrorBox from "../../../components/Error";
+import { DeatailedIssue } from "../src/@types";
+import { github } from "../src/api";
+import ErrorBox from "../src/components/Error";
 
 export default async ({ searchParams }: any) => {
     const { user, repo, id } = searchParams;
@@ -9,7 +9,7 @@ export default async ({ searchParams }: any) => {
         const { data }: { data: DeatailedIssue[] } = await github.get(
             `/repos/${user}/${repo}/issues/${id}/timeline`
         );
-        
+
         if (data?.length <= 0) throw new Error("No Timeline previews for this Issue!");
 
         return (

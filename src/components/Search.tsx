@@ -1,4 +1,7 @@
-import type { DetailedHTMLProps, InputHTMLAttributes } from "react";
+"use client";
+
+import { useRouter } from "next/navigation";
+import { DetailedHTMLProps, FormEvent, InputHTMLAttributes } from "react";
 
 const inputs = [
     {
@@ -14,12 +17,23 @@ const inputs = [
 ] as DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>[];
 
 export default function Search({ repo = false, row = false }: Props) {
+    const router = useRouter();
+
+    function handleSubmitWUser(e: FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        router.push(`/${formData.get("user")}/${formData.get("repo")}`);
+    }
+
+    function handleSubmit(e: FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        router.push(`/search/${formData.get("q")}?page=${formData.get("page")}`);
+    }
+
     if (repo) {
         return (
-            <form
-                action="/issues"
-                method="get"
-                className={`${row ? "row" : "col"} gap-2`}>
+            <form onSubmit={handleSubmit} className={`${row ? "row" : "col"} gap-2`}>
                 <input
                     required={true}
                     name="q"
@@ -34,10 +48,7 @@ export default function Search({ repo = false, row = false }: Props) {
         );
     } else
         return (
-            <form
-                action="/search/issues"
-                method="get"
-                className={`${row ? "row" : "col"} gap-2`}>
+            <form onSubmit={handleSubmitWUser} className={`${row ? "row" : "col"} gap-2`}>
                 {inputs.map((field) => (
                     <input
                         key={field.name}
