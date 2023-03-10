@@ -1,7 +1,6 @@
-import { Metadata } from "next";
-import Search from "../components/Search";
+import Search from "../../components/Search";
 
-export const metadata: Metadata = {
+export const metadata = {
     title: "Home",
 };
 
@@ -9,7 +8,7 @@ export default async () => {
     return (
         <section className="col center gap-2 bg-color">
             <h2 className="h4 my-6">Search Repo Issues</h2>
-            <Search repo={true} />
+            <Search />
         </section>
     );
 };
