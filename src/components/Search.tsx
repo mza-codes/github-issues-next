@@ -7,16 +7,18 @@ const inputs = [
     {
         name: "user",
         minLength: 1,
+        maxLength: 120,
         placeholder: "Repository Owner",
     },
     {
         name: "repo",
         minLength: 1,
+        maxLength: 120,
         placeholder: "Repository Name",
     },
 ] as DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>[];
 
-export default function Search({ repo = false, row = false }: Props) {
+export default function Search({ repo, row, sm }: Props) {
     const router = useRouter();
 
     function handleSubmitWUser(e: FormEvent<HTMLFormElement>) {
@@ -37,7 +39,8 @@ export default function Search({ repo = false, row = false }: Props) {
                 <input
                     required={true}
                     name="q"
-                    className="input-field"
+                    maxLength={120}
+                    className={`input-field ${sm ? "py-1 px-2" : "py-2 px-4"}`}
                     placeholder="Search Issues..."
                 />
                 <input type="hidden" value={1} name="page" readOnly />
@@ -54,7 +57,7 @@ export default function Search({ repo = false, row = false }: Props) {
                         key={field.name}
                         required={true}
                         {...field}
-                        className="input-field"
+                        className={`input-field ${sm ? "py-1 px-2" : "py-2 px-4"}`}
                     />
                 ))}
                 <button type="submit" className={`btn-submit btn-hover text-sm`}>
@@ -67,4 +70,5 @@ export default function Search({ repo = false, row = false }: Props) {
 type Props = {
     repo?: boolean;
     row?: boolean;
+    sm?: boolean;
 };

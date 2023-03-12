@@ -1,4 +1,5 @@
 import Header from "../components/Header";
+import ThemeController from "../components/ThemeControl";
 import "../styles/globals.css";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -12,6 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body>
                 <Header />
                 <main className="min-h-[100dvh] col center pt-24">{children}</main>
+                <ThemeController />
             </body>
         </html>
     );

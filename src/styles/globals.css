@@ -14,21 +14,30 @@
     --text-main: #000;
     --text-sec: #fff;
     --bg-header: rgb(229, 231, 235);
+    --issue-card: #ccc;
 }
 
-.theme {
+.dark {
     --bg-main: #333;
     --text-main: #fff;
     --text-sec: #111;
     --bg-header: #222;
+    --issue-card: #222;
+}
+
+.markdown-text {
+    color: var(--text-main) !important;
 }
 
 .theme-text {
     color: var(--text-main);
 }
 
+.issue-card {
+    background-color: var(--issue-card);
+}
+
 .header {
-    /* bg-gray-200 */
     background-color: var(--bg-header);
 }
 
@@ -53,7 +62,7 @@ body {
 
 .input-field {
     color: #000;
-    @apply py-2 px-4 min-w-[280px] w-max rounded-md focus:border-green-500 outline-none border-2;
+    @apply min-w-[200px] text-sm rounded-md focus:border-green-500 outline-none border-2;
 }
 
 .btn-submit {
@@ -61,7 +70,7 @@ body {
 }
 
 .btn-hover {
-    @apply active:scale-95 transition-all ease-in-out;
+    @apply active:scale-95 transition-all ease-in-out font-semibold;
 }
 
 .img-pacleholder {
@@ -143,6 +152,10 @@ body {
 
 .hidden-icon {
     @apply opacity-0 hover:opacity-100 cursor-pointer;
+}
+
+.hover-opacify {
+    @apply bg-opacity-40 hover:bg-opacity-80;
 }
 
 /* LOADER BAR */

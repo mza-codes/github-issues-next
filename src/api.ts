@@ -1,13 +1,12 @@
 import axios from "axios";
-import { Octokit } from "octokit";
 
-export const octokit = new Octokit({
+/** export const octokit = new Octokit({
     auth: process.env.GITHUB_TOKEN ?? "",
     baseUrl: "https://api.github.com",
-});
+}); */
 
 export const github = axios.create({
-    baseURL: `https://api.github.com`
+    baseURL: `https://api.github.com`,
 });
 
 /**

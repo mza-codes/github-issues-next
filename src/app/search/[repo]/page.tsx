@@ -20,7 +20,9 @@ export default async ({ params, searchParams }: any) => {
         return (
             <>
                 <section className="col center gap-2">
-                    <h2 className="h3 my-6">Listing Issues with query: {q}</h2>
+                    <h2 className="h3 my-6 text-center mx-2">
+                        Listing Issues with query: {q}
+                    </h2>
                     <Issues data={data?.items} />
                 </section>
                 <PaginationWrapper>
