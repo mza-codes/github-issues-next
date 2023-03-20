@@ -15,6 +15,7 @@
     --text-sec: #fff;
     --bg-header: rgb(229, 231, 235);
     --issue-card: #ccc;
+    --border-counter: #222;
 }
 
 .dark {
@@ -23,6 +24,7 @@
     --text-sec: #111;
     --bg-header: #222;
     --issue-card: #222;
+    --border-counter: #fff;
 }
 
 .markdown-text {
@@ -135,6 +137,28 @@ body {
 
 .h6 {
     @apply text-2xl font-medium;
+}
+
+.counter {
+    border: 1px solid var(--border-counter);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.counter button {
+    padding: 0.6rem 1rem;
+    font-weight: 900;
+}
+
+.counter button:first-child {
+    border-right: 1px solid var(--border-counter);
+}
+
+.counter button:last-child {
+    border-left: 1px solid var(--border-counter);
 }
 
 .fade_bottom {
