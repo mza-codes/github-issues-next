@@ -1,3 +1,5 @@
+import Link from "next/link";
+import Clock from "../components/Clock";
 import Counter from "../components/Counter";
 import Search from "../components/Search";
 
@@ -14,9 +16,11 @@ export default async () => {
             <Search repo={true} />
             {isDev && (
                 <div className="row center gap-3">
-                    {[...Array(1)].map((v, i) => (
-                        <Counter key={i} />
-                    ))}
+                    <Counter />
+                    {/* <Clock /> */}
+                    <Link href="/table" className="btn-submit btn-hover text-sm">
+                        Table
+                    </Link>
                 </div>
             )}
         </section>
