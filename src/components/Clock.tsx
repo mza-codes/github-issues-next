@@ -1,17 +1,24 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
-let id: NodeJS.Timer;
 export default function Clock() {
     const [time, setTime] = useState(Date.now());
-    id = setInterval(() => setTime(Date.now), 10);
+
+    // const id = useRef<NodeJS.Timer>();
+    // useEffect(() => {
+    //     id.current = setInterval(() => setTime(Date.now), 10);
+    //     console.count("inside useEffect");
+    //     return () => {
+    //         console.count("Inside useEffect RETURN;");
+    //         clearInterval(id.current);
+    //     };
+    // }, [time]);
 
     useEffect(() => {
-        return () => {
-            clearInterval(id);
-        };
-    }, [time]);
+        console.count("inside useEffectV2");
+        setInterval(() => setTime(Date.now), 10);
+    }, []);
 
     return (
         <div className="p-4">

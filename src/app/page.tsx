@@ -17,7 +17,7 @@ export default async () => {
             {isDev && (
                 <div className="row center gap-3">
                     <Counter />
-                    {/* <Clock /> */}
+                    <Clock />
                     <Link href="/table" className="btn-submit btn-hover text-sm">
                         Table
                     </Link>
